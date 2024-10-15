@@ -9,6 +9,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns #for step 4
 
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
 #Step 1
 
 df = pd.read_csv("Project_1_Data.csv") #no need for file path since its in the downloads folder
@@ -49,3 +52,27 @@ plt.plot(avg_x.index,avg_x.values)
 plt.xlabel('Step')
 plt.ylabel('Average X')
 plt.title('Average X at Each Step')
+
+
+#step 3
+
+#Data Splitting using simple method from lesson 3
+
+X = df[['X','Y','Z']]
+Y = df['Step']
+
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
+
+#Scaling
+
+my_scaler = StandardScaler()
+my_scaler.fit(X_train)
+scaled_data_train = my_scaler.transform(X_train)
+scaled_data_train_df = pd.DataFrame(scaled_data_train,columns=X_train.columns)
+
+scaled_data_test = my_scaler.transform(X_test)
+scaled_data_test_df = pd.DataFrame(scaled_data_test,columns=X_test.columns)
+
+X_train=scaled_data_train_df 
+X_test=scaled_data_test_df
+
