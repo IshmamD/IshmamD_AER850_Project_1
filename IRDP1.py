@@ -12,12 +12,17 @@ import seaborn as sns #for step 3
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
-#Step 1
+from sklearn.model_selection import GridSearchCV
+from sklearn.linear_model import LogisticRegression
+
+
+
+#STEP 1
 
 df = pd.read_csv("Project_1_Data.csv") #no need for file path since its in the downloads folder
 print(df.info()) #check that line 12 actually worked
 
-#Step 2
+#STEP 2
 plt.figure()
 plt.scatter(df['Step'], df['X'], color='red', label = 'X')
 
@@ -54,7 +59,7 @@ plt.ylabel('Average X')
 plt.title('Average X at Each Step')
 
 
-#step 3
+#STEP 3
 
 #Data Splitting using simple method from lesson 3
 
@@ -88,3 +93,15 @@ print('The correlation between Y and step is \n',corr2)
 corr3 = y_train.corr(X_train['Z'])
 print('The correlation between Z and step is \n',corr3)
 
+#STEP 4
+
+my_model1 = LogisticRegression(random_state=42)
+my_model1.fit(X_train,y_train)
+y_pred_train1 = my_model1.predict(X_train)
+
+param_grid = {
+    'C': [0.01, 0.1, 1, 10],
+    'solver': ['liblinear', 'lbfgs', 'newton-cg', 'saga']
+}
+
+grid_search = GridSearchCV(my_model1, param_grid, cv=5, scoring = 'f1')
