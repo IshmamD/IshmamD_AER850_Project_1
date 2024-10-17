@@ -137,12 +137,15 @@ my_model3 = GaussianNB()
 my_model3.fit(X_train, y_train)
 y_pred_train3 = my_model3.predict(X_train)
 
-param_grid3 = {
+dist = {
     'var_smoothing': (1e-9,1e-3)
 }
 
-grid_search3 = Ran
-
+grid_search3 = RandomizedSearchCV(my_model3, dist,scoring = 'accuracy',random_state = 42)
+grid_search3.fit(X_train, y_train)
+best_params3 = grid_search3.best_params_
+print("Best Hyperparameters:", best_params3)
+best_model3 = grid_search3.best_estimator_
 
 
 
