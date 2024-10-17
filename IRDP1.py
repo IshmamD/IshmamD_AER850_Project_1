@@ -17,6 +17,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import GaussianNB
 
+from sklearn.metrics import ConfusionMatrixDisplay #for step 5
+from sklearn.metrics import accuracy_score, precision_score, f1_score, confusion_matrix
 
 #STEP 1
 
