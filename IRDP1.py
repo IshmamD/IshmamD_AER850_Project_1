@@ -98,7 +98,7 @@ print('The correlation between Z and step is \n',corr3)
 
 my_model1 = LogisticRegression(random_state=42)
 my_model1.fit(X_train,y_train)
-y_pred_train1 = my_model1.predict(X_train)
+
 
 param_grid = {
     'C': [0.01, 0.1, 1, 10],
@@ -110,12 +110,12 @@ grid_search.fit(X_train, y_train)
 best_params1 = grid_search.best_params_
 print("Best Hyperparameters:", best_params1)
 best_model1 = grid_search.best_estimator_
-
+y_pred_train1 = best_model1.predict(X_train)
 
 
 my_model2 = RandomForestClassifier(random_state=42)
 my_model2.fit(X_train, y_train)
-y_pred_train2 = my_model2.predict(X_train)
+
 
 param_grid2 = {
     'n_estimators': [10, 30, 50, 100],
@@ -129,13 +129,13 @@ grid_search2.fit(X_train, y_train)
 best_params2 = grid_search2.best_params_
 print("Best Hyperparameters:", best_params2)
 best_model2 = grid_search2.best_estimator_
-
+y_pred_train2 = best_model2.predict(X_train)
 
 
 
 my_model3 = GaussianNB()
 my_model3.fit(X_train, y_train)
-y_pred_train3 = my_model3.predict(X_train)
+
 
 dist = {
     'var_smoothing': (1e-9,1e-3)
@@ -146,7 +146,6 @@ grid_search3.fit(X_train, y_train)
 best_params3 = grid_search3.best_params_
 print("Best Hyperparameters:", best_params3)
 best_model3 = grid_search3.best_estimator_
-
-
+y_pred_train3 = best_model3.predict(X_train)
 
 
