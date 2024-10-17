@@ -64,7 +64,7 @@ Y = df['Step']
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=42, stratify=Y)
 
 #Scaling
-
+"""
 my_scaler = StandardScaler()
 my_scaler.fit(X_train)
 scaled_data_train = my_scaler.transform(X_train)
@@ -75,7 +75,7 @@ scaled_data_test_df = pd.DataFrame(scaled_data_test,columns=X_test.columns)
 
 X_train=scaled_data_train_df 
 X_test=scaled_data_test_df
-
+"""
 #Correlation Matrix
 plt.figure()
 corr_matrix = (X_train).corr()
