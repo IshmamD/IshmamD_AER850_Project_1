@@ -152,4 +152,23 @@ y_pred_train3 = best_model3.predict(X_train)
 
 #STEP 5
 
+ypred1 = best_model1.predict(X_test)
+acc1 = accuracy_score(y_test, ypred1)
+prec1 = precision_score(y_test, ypred1, average = 'weighted')
+f11 = f1_score(y_test, ypred1, average='weighted')
 
+print("For the logistic Regression Model \nThe accuracy is", acc1, "\nThe precision is", prec1, "\nThe f1 score is", f11)
+
+ypred2 = best_model2.predict(X_test)
+acc2 = accuracy_score(y_test, ypred2)
+prec2 = precision_score(y_test, ypred2, average = 'weighted')
+f12 = f1_score(y_test, ypred2, average='weighted')
+
+print("For the Random Forest Classifier Model \nThe accuracy is", acc2, "\nThe precision is", prec2, "\nThe f1 score is", f12)
+
+ypred3 = best_model3.predict(X_test)
+acc3 = accuracy_score(y_test, ypred3)
+prec3 = precision_score(y_test, ypred3, average = 'weighted')
+f13 = f1_score(y_test, ypred3, average='weighted')
+
+print("For the Gaussian Naive Bayes Model \nThe accuracy is", acc3, "\nThe precision is", prec3, "\nThe f1 score is", f13)
