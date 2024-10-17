@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns #for step 3
 
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, RandomizedSearchCV
 from sklearn.preprocessing import StandardScaler
 
 from sklearn.model_selection import GridSearchCV
@@ -138,14 +138,10 @@ my_model3.fit(X_train, y_train)
 y_pred_train3 = my_model3.predict(X_train)
 
 param_grid3 = {
-    'var_smoothing': 
+    'var_smoothing': (1e-9,1e-3)
 }
 
-grid_search3 = GridSearchCV(my_model3, param_grid3, cv=5, scoring = 'accuracy')
-grid_search3.fit(X_train, y_train)
-best_params3 = grid_search3.best_params_
-print("Best Hyperparameters:", best_params3)
-best_model3 = grid_search3.best_estimator_
+grid_search3 = Ran
 
 
 
