@@ -7,7 +7,7 @@ Created on Tue Oct  8 09:32:08 2024
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns #for step 4
+import seaborn as sns #for step 3
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -61,7 +61,7 @@ plt.title('Average X at Each Step')
 X = df[['X','Y','Z']]
 Y = df['Step']
 
-X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=42, stratify=Y)
 
 #Scaling
 
@@ -77,3 +77,14 @@ X_train=scaled_data_train_df
 X_test=scaled_data_test_df
 
 #Correlation Matrix
+plt.figure()
+corr_matrix = (X_train).corr()
+sns.heatmap(np.abs(corr_matrix))
+
+corr1 = y_train.corr(X_train['X'])
+print('The correlation between X and step is \n',corr1)
+corr2 = y_train.corr(X_train['Y'])
+print('The correlation between Y and step is \n',corr2)
+corr3 = y_train.corr(X_train['Z'])
+print('The correlation between Z and step is \n',corr3)
+
