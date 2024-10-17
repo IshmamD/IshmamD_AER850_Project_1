@@ -137,8 +137,8 @@ my_model3 = GaussianNB()
 my_model3.fit(X_train, y_train)
 
 
-dist = {
-    'var_smoothing': (1e-9,1e-3)
+dist = { 
+    'var_smoothing': [1e-9, 1e-8, 1e-7, 1e-6, 1e-5, 1e-4, 1e-3]
 }
 
 grid_search3 = RandomizedSearchCV(my_model3, dist,scoring = 'accuracy',random_state = 42)
