@@ -15,6 +15,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import GridSearchCV
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB
 
 
 #STEP 1
@@ -110,6 +111,8 @@ best_params1 = grid_search.best_params_
 print("Best Hyperparameters:", best_params1)
 best_model1 = grid_search.best_estimator_
 
+
+
 my_model2 = RandomForestClassifier(random_state=42)
 my_model2.fit(X_train, y_train)
 y_pred_train2 = my_model2.predict(X_train)
@@ -130,10 +133,19 @@ best_model2 = grid_search2.best_estimator_
 
 
 
+my_model3 = GaussianNB()
+my_model3.fit(X_train, y_train)
+y_pred_train3 = my_model3.predict(X_train)
 
+param_grid3 = {
+    'var_smoothing': 
+}
 
-
-
+grid_search3 = GridSearchCV(my_model3, param_grid3, cv=5, scoring = 'accuracy')
+grid_search3.fit(X_train, y_train)
+best_params3 = grid_search3.best_params_
+print("Best Hyperparameters:", best_params3)
+best_model3 = grid_search3.best_estimator_
 
 
 
