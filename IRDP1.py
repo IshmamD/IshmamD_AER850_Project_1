@@ -104,4 +104,8 @@ param_grid = {
     'solver': ['liblinear', 'lbfgs', 'newton-cg', 'saga']
 }
 
-grid_search = GridSearchCV(my_model1, param_grid, cv=5, scoring = 'f1')
+grid_search = GridSearchCV(my_model1, param_grid, cv=5, scoring = 'accuracy')
+grid_search.fit(X_train, y_train)
+best_params = grid_search.best_params_
+print("Best Hyperparameters:", best_params)
+best_model1 = grid_search.best_estimator_
