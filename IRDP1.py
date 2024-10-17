@@ -14,7 +14,7 @@ from sklearn.preprocessing import StandardScaler
 
 from sklearn.model_selection import GridSearchCV
 from sklearn.linear_model import LogisticRegression
-
+from sklearn.ensemble import RandomForestClassifier
 
 
 #STEP 1
@@ -109,5 +109,33 @@ grid_search.fit(X_train, y_train)
 best_params1 = grid_search.best_params_
 print("Best Hyperparameters:", best_params1)
 best_model1 = grid_search.best_estimator_
+
+my_model2 = RandomForestClassifier(random_state=42)
+my_model2.fit(X_train, y_train)
+y_pred_train2 = my_model2.predict(X_train)
+
+param_grid2 = {
+    'n_estimators': [10, 30, 50, 100],
+    'max_depth': [None, 10, 20, 30],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 2, 4],
+    }
+
+grid_search2 = GridSearchCV(my_model2, param_grid2, cv=5, scoring = 'accuracy',n_jobs=1)
+grid_search2.fit(X_train, y_train)
+best_params2 = grid_search2.best_params_
+print("Best Hyperparameters:", best_params2)
+best_model2 = grid_search2.best_estimator_
+
+
+
+
+
+
+
+
+
+
+
 
 
