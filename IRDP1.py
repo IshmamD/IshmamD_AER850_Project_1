@@ -172,3 +172,12 @@ prec3 = precision_score(y_test, ypred3, average = 'weighted')
 f13 = f1_score(y_test, ypred3, average='weighted')
 
 print("For the Gaussian Naive Bayes Model \nThe accuracy is", acc3, "\nThe precision is", prec3, "\nThe f1 score is", f13)
+
+confusionmatrix1 = confusion_matrix(y_test,ypred1)
+confusionmatrix2 = confusion_matrix(y_test,ypred2)
+confusionmatrix3 = confusion_matrix(y_test,ypred3)
+
+disp = ConfusionMatrixDisplay(confusionmatrix1)
+
+
+
