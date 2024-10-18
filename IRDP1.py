@@ -190,7 +190,7 @@ disp.plot()
 #STEP 6
 
 estimators = [best_model1, best_model2]
-clf = StackingClassifier(estimators=estimators, final_estimator=LogisticRegression())
+clf = StackingClassifier(estimators=estimators, final_estimator=LogisticRegression(random_state=42),cv=5)
 clf.fit(X_train,y_train)
 ypred4 = clf.predict(X_test)
 
