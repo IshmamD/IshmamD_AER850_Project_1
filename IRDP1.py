@@ -22,7 +22,7 @@ from sklearn.metrics import accuracy_score, precision_score, f1_score, confusion
 
 from sklearn.ensemble import StackingClassifier
 
-from sklearn.externals import joblib
+import joblib
 
 #STEP 1
 
