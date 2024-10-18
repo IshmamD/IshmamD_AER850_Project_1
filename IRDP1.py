@@ -20,6 +20,9 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import ConfusionMatrixDisplay #for step 5
 from sklearn.metrics import accuracy_score, precision_score, f1_score, confusion_matrix
 
+from sklearn.ensemble import StackingClassifier
+
+
 #STEP 1
 
 df = pd.read_csv("Project_1_Data.csv") #no need for file path since its in the downloads folder
@@ -182,4 +185,19 @@ disp.plot()
 disp = ConfusionMatrixDisplay(confusionmatrix2)
 disp.plot()
 disp = ConfusionMatrixDisplay(confusionmatrix3)
+disp.plot()
+
+#STEP 6
+
+estimators = [best_model1, best_model2]
+clf = StackingClassifier(estimators=estimators, final_estimator=LogisticRegression())
+clf.fit(X_train,y_train)
+ypred4 = clf.predict(X_test)
+
+acc4 = accuracy_score(y_test, ypred4)
+prec4 = precision_score(y_test, ypred4, average = 'weighted')
+f14 = f1_score(y_test, ypred4, average='weighted')
+
+confusionmatrix4 = confusion_matrix(y_test,ypred4)
+disp = ConfusionMatrixDisplay(confusionmatrix4)
 disp.plot()
