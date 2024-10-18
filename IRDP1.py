@@ -22,6 +22,7 @@ from sklearn.metrics import accuracy_score, precision_score, f1_score, confusion
 
 from sklearn.ensemble import StackingClassifier
 
+from sklearn.externals import joblib
 
 #STEP 1
 
@@ -205,3 +206,13 @@ disp.plot()
 print("\n")
 print("For the Stacked Model \nThe accuracy is", acc4, "\nThe precision is", prec4, "\nThe f1 score is", f14)
 
+filename = "best_model3.joblib"
+joblib.dump(best_model3,filename)
+
+saved = joblib.load(filename)
+
+data = [[9.375,3.0625,1.51],[6.995,5.125,0.3875], [0,3.0625,1.93], [9.4,3,1.8], [9.4,3,1.3]]
+ypred5 = saved.predict(data)
+
+print("\n")
+print(ypred5)
