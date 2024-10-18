@@ -178,6 +178,8 @@ confusionmatrix2 = confusion_matrix(y_test,ypred2)
 confusionmatrix3 = confusion_matrix(y_test,ypred3)
 
 disp = ConfusionMatrixDisplay(confusionmatrix1)
-
-
-
+disp.plot()
+disp = ConfusionMatrixDisplay(confusionmatrix2)
+disp.plot()
+disp = ConfusionMatrixDisplay(confusionmatrix3)
+disp.plot()
