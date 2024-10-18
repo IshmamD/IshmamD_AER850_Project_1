@@ -116,7 +116,7 @@ best_params1 = grid_search.best_params_
 print("Best Hyperparameters:", best_params1)
 best_model1 = grid_search.best_estimator_
 y_pred_train1 = best_model1.predict(X_train)
-
+print("\n")
 
 my_model2 = RandomForestClassifier(random_state=42)
 my_model2.fit(X_train, y_train)
@@ -135,7 +135,7 @@ best_params2 = grid_search2.best_params_
 print("Best Hyperparameters:", best_params2)
 best_model2 = grid_search2.best_estimator_
 y_pred_train2 = best_model2.predict(X_train)
-
+print("\n")
 
 
 my_model3 = GaussianNB()
@@ -159,21 +159,21 @@ ypred1 = best_model1.predict(X_test)
 acc1 = accuracy_score(y_test, ypred1)
 prec1 = precision_score(y_test, ypred1, average = 'weighted')
 f11 = f1_score(y_test, ypred1, average='weighted')
-
+print("\n")
 print("For the logistic Regression Model \nThe accuracy is", acc1, "\nThe precision is", prec1, "\nThe f1 score is", f11)
 
 ypred2 = best_model2.predict(X_test)
 acc2 = accuracy_score(y_test, ypred2)
 prec2 = precision_score(y_test, ypred2, average = 'weighted')
 f12 = f1_score(y_test, ypred2, average='weighted')
-
+print("\n")
 print("For the Random Forest Classifier Model \nThe accuracy is", acc2, "\nThe precision is", prec2, "\nThe f1 score is", f12)
 
 ypred3 = best_model3.predict(X_test)
 acc3 = accuracy_score(y_test, ypred3)
 prec3 = precision_score(y_test, ypred3, average = 'weighted')
 f13 = f1_score(y_test, ypred3, average='weighted')
-
+print("\n")
 print("For the Gaussian Naive Bayes Model \nThe accuracy is", acc3, "\nThe precision is", prec3, "\nThe f1 score is", f13)
 
 confusionmatrix1 = confusion_matrix(y_test,ypred1)
@@ -201,3 +201,7 @@ f14 = f1_score(y_test, ypred4, average='weighted')
 confusionmatrix4 = confusion_matrix(y_test,ypred4)
 disp = ConfusionMatrixDisplay(confusionmatrix4)
 disp.plot()
+
+print("\n")
+print("For the Stacked Model \nThe accuracy is", acc4, "\nThe precision is", prec4, "\nThe f1 score is", f14)
+
