@@ -27,7 +27,7 @@ import joblib
 #STEP 1
 
 df = pd.read_csv("Project_1_Data.csv") #no need for file path since its in the downloads folder
-print(df.info()) #check that line 12 actually worked
+print(df.info()) #check that line 29 actually worked
 
 #STEP 2
 plt.figure()
